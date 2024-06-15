@@ -1,0 +1,59 @@
+/* Style the form container */
+#text{
+  color: black;
+}
+#mobile_number{
+  color: black;
+}
+#my-form {
+  width: 290px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style form labels */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Style form input fields */
+input[type="text"],
+input[type="email"],
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Style the submit button */
+#my-form-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#my-form-button:hover {
+  background-color: #0056b3;
+}
+
+/* Style the status message */
+#my-form-status {
+  margin-top: 10px;
+  color: #007bff;
+}
+
+.error-message {
+  color: red;
+}

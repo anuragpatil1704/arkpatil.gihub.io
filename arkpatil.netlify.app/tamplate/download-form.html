@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+    <style>
+        /* Styles for the form container and input fields */
+        /* Your existing CSS styles here */
+    </style>
+</head>
+<body>
+    <center>
+    <h2>Navi</h2>
+    </center>
+    <form id="my-form" action="submit.html" method="POST">
+        <!-- Form inputs -->
+        <label for="Name">Name:</label>
+        <input type="text" id="Name" name="Name" required="">
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" name="Email" required="">
+        <label for="Number">Mobile No.:</label>
+        <input type="text" id="Message" name="Message" required="">
+        <!-- Hidden input for ID -->
+        <input type="hidden" id="CheckboxValue" name="ID" value="DM" required="">
+        <br>
+        <!-- Submit button -->
+        <button id="my-form-button">Submit</button>
+        <!-- Status message -->
+        <p id="my-form-status"></p>
+    </form>
+    <center>
+    <div id="download-app-button">
+        <!-- Download app button -->
+        <!-- Your existing download app button code here -->
+    </div>
+    </center>
+    <script>
+        // Your existing JavaScript code here
+    </script>
+</body>
+</html>

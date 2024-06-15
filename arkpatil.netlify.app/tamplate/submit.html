@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submission Received</title>
+    <style>
+        /* Style the page container */
+        #submission-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style submission details */
+        #submission-details {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="submission-container">
+        <h2>Submission Received</h2>
+        <div id="submission-details">
+            <label for="submitted-name">Name:</label>
+            <span id="submitted-name"></span><br>
+
+            <label for="submitted-email">Email:</label>
+            <span id="submitted-email"></span><br>
+
+            <label for="submitted-message">Message:</label>
+            <span id="submitted-message"></span><br>
+
+            <label for="submitted-id">Your ID:</label>
+            <span id="submitted-id"></span>
+        </div>
+        <p>Thank you for your submission!</p>
+    </div>
+
+    <script>
+        // Function to extract parameters from the URL
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Get form data from URL parameters
+        var submittedName = getParameterByName('Name');
+        var submittedEmail = getParameterByName('Email');
+        var submittedMessage = getParameterByName('Message');
+        var submittedID = getParameterByName('ID');
+
+        // Display form data in the HTML
+        document.getElementById('submitted-name').textContent = submittedName;
+        document.getElementById('submitted-email').textContent = submittedEmail;
+        document.getElementById('submitted-message').textContent = submittedMessage;
+        document.getElementById('submitted-id').textContent = submittedID;
+    </script>
+</body>
+</html>

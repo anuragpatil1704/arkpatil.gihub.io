@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Reffer Program</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Varela+Round'>
+  <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    .float {
+      position: absolute;
+      top: 25%;
+    }
+
+    .float1 {
+      position: absolute;
+      top: 50%;
+    }
+
+    .float2 {
+      position: absolute;
+      top: 75%;
+    }
+
+    @charset "UTF-8";
+
+    .img1 {
+      margin-left: 10px;
+      width: 150px;
+      height: 150px;
+      border: solid black;
+      border-radius: 2.5rem;
+    }
+
+    .img2 {
+      margin-left: 10px;
+      width: 150px;
+      height: 150px;
+      border: solid black;
+      border-radius: 2.5rem;
+    }
+
+    .imgs {
+      width: 175px;
+      height: 175px;
+      border: solid black;
+      border-radius: 2.5rem;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #2D2F33;
+      font-family: "Varela Round", "Ionicons";
+    }
+
+    ::selection {
+      background: #3F8EFC;
+      color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .download {
+      position: absolute;
+      top: calc(50% - 30px);
+      right: calc(50% - 115px);
+      width: 290px;
+      height: 60px;
+      background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.045));
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.045));
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 0 1px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 100px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 60px;
+      text-align: center;
+      letter-spacing: 5px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81), transform 0.15s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+    }
+
+    .download:hover {
+      right: calc(50% - 200px);
+      width: 400px;
+    }
+
+    .download:active {
+      transform: translateY(3px);
+    }
+
+    .download:before,
+    .download:after {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+    }
+
+    .download:before {
+      content: "DOWNLOAD THE APPS";
+    }
+
+    .download:after {
+      content: "Click to select a App";
+      top: -60px;
+      opacity: 0;
+    }
+
+    .download:hover:after {
+      top: 0px;
+      opacity: 1;
+    }
+
+    .download:hover:before {
+      top: 60px;
+      opacity: 0;
+    }
+
+    .platforms {
+      position: absolute;
+      top: calc(40% - 100px);
+      left: calc(50% - 290px);
+      height: 800px;
+      width: 580px;
+      background: #fff;
+      border-radius: 20px;
+      visibility: hidden;
+      transform: scale(0.9);
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+    }
+
+    .platforms:target {
+      visibility: visible;
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .platforms a {
+      position: absolute;
+      top: 200px;
+      left: 10px;
+      width: 180px;
+      height: 180px;
+      border-radius: 10px;
+      color: #3f8efc00;
+      text-transform: uppercase;
+      transition: top 0.5s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+    }
+
+    .platforms a:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+
+    .platforms a:nth-child(2) {
+      left: 200px;
+    }
+
+    .platforms a:nth-child(3) {
+      left: 390px;
+      transition-delay: 0.1s;
+    }
+
+    .platforms:target a {
+      top: 10px;
+    }
+
+    .platforms a:hover {
+      background: #E5F4FF;
+      box-shadow: 0 0 0 1px #A5CFFF;
+    }
+
+    .platforms a:before {
+      color: black;
+      content: attr(data-os);
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+      height: 40px;
+      line-height: 60px;
+      text-align: center;
+    }
+
+    .platforms a:after {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 120px;
+      line-height: 140px;
+      text-align: center;
+      font-size: 300%;
+      transform: scale(1.25);
+      transform-origin: center center;
+    }
+
+    .platforms a:nth-child(1):after {
+      content: "";
+    }
+
+    .platforms a:nth-child(2):after {
+      content: "";
+    }
+
+    .platforms a:nth-child(3):after {
+      content: "";
+    }
+
+    .installer {
+      position: fixed;
+      top: calc(50% - 150px);
+      left: calc(50% - 300px);
+      width: 600px;
+      height: 300px;
+      background: #fff;
+      border-radius: 20px;
+      visibility: hidden;
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+    }
+
+    .installer:target {
+      visibility: visible;
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .installer a.back {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 38px;
+      height: 38px;
+      line-height: 38px;
+      text-align: center;
+      font-size: 200%;
+      color: #bbb;
+    }
+
+    .installer a.back:before {
+      content: "";
+    }
+
+    .installer a.back:after {
+      content: "Back";
+      position: absolute;
+      top: 7px;
+      left: 30px;
+      height: 20;
+      line-height: 20px;
+      font-size: 40%;
+      text-align: center;
+      color: #cacaca;
+      border-radius: 5px;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.2s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+    }
+
+    .installer a.back:hover:after {
+      left: 38px;
+      opacity: 1;
+    }
+
+    .installer a.close {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      font-size: 200%;
+      color: #bbb;
+    }
+
+    .installer a.close:before {
+      content: "";
+    }
+
+    .installer a.close:after {
+      content: "Close";
+      position: absolute;
+      top: 7px;
+      right: 30px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 40%;
+      text-align: center;
+      color: #cacaca;
+      border-radius: 5px;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.2s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+    }
+
+    .installer a.close:hover:after {
+      right: 38px;
+      opacity: 1;
+    }
+
+    .installer .info {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      height: calc(100% - 80px);
+      width: 200px;
+    }
+
+    .installer .info:before {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 180px;
+      height: 220px;
+      line-height: 220px;
+      text-align: center;
+      font-size: 1000%;
+      color: #3f8efc00;
+    }
+
+    .installer .info:after {
+      content: attr(data-weight);
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      width: 180px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      font-size: 100%;
+      font-weight: bolder;
+      letter-spacing: 2px;
+      color: #aaa;
+    }
+
+    .installer#windows .info:before {
+      content: "";
+    }
+
+    .installer#mac .info:before {
+      content: "";
+    }
+
+    .installer#linux .info:before {
+      content: "";
+    }
+
+    .installer .details {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      height: 200px;
+      width: calc(100% - 280px);
+      padding: 10px;
+    }
+
+    .installer .details p {
+      margin: 0px;
+      font-weight: bolder;
+      font-size: 120%;
+      color: #444;
+    }
+
+    .installer .details span {
+      color: #cacaca;
+    }
+
+    .installer .details ul {
+      padding-left: 0px;
+      list-style: none;
+      color: #888;
+    }
+
+    .installer .details ul li {
+      margin-left: 0px !important;
+      margin-bottom: 8px;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+    }
+
+    .installer .details ul li:before {
+      content: "";
+      margin-right: 0;
+    }
+
+    .installer:target .details ul li {
+      margin-left: 10px;
+      opacity: 1;
+    }
+
+    .installer:target .details ul li:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+
+    .installer:target .details ul li:nth-child(2) {
+      transition-delay: 0.2s;
+    }
+
+    .installer:target .details ul li:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+
+    .installer:target .details ul li:nth-child(4) {
+      transition-delay: 0.4s;
+    }
+
+    .installer label {
+      position: absolute;
+      bottom: 20px;
+      right: 90px;
+      height: 40px;
+      width: calc(100% - 320px);
+      border-radius: 5px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .installer label input {
+      display: none;
+    }
+
+    .installer label span {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      line-height: 40px;
+      text-align: center;
+      color: #fff;
+      background: #3F8EFC;
+    }
+
+    .installer label input:checked~span {
+      background: #87E544;
+      animation: downloadSuccess 3.1s ease;
+    }
+
+    .installer label span:after {
+      content: "DOWNLOAD";
+      position: absolute;
+      width: 80%;
+      height: 100%;
+      top: 0px;
+      left: 10%;
+    }
+
+    .installer label input:checked~span:after {
+      content: "Thank you for download!";
+      animation: downloadState 3s;
+    }
+
+    .installer label span:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      opacity: 0;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .installer label input:checked~span:before {
+      animation: downloadProgress 3s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+    }
+
+    @keyframes downloadSuccess {
+
+      0%,
+      90% {
+        background: #3F8EFC;
+      }
+
+      100% {
+        background: #87E544;
+      }
+    }
+
+    @keyframes downloadState {
+
+      0%,
+      95% {
+        content: "DOWNLOADING...";
+      }
+
+      100% {
+        content: "Thank you for download!";
+      }
+    }
+
+    @keyframes downloadProgress {
+      0% {
+        width: 5%;
+        opacity: 1;
+      }
+
+      35% {
+        width: 17%;
+      }
+
+      64% {
+        width: 51%;
+      }
+
+      81% {
+        width: 70%;
+      }
+
+      90% {
+        width: 86%;
+        opacity: 1;
+      }
+
+      100% {
+        width: 100%;
+        opacity: 0;
+      }
+    }
+
+    .downloadBtn {
+      position: absolute;
+      top: 80%;
+      left: 60%;
+      width: 200px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .downloadBtn.downloading {
+      background-color: #28a745;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <a class="download" href="#apps"></a>
+  <a class="close" href="index.html"></a>
+  <div class="platforms" id="apps">
+    <a href="#navi" data-os="navi"><img class="img1" src="img/navi.jpeg" alt=""></a>
+    <a href="#winzo" data-os="Winzo"><img class="img1" src="img/winzo.png" alt=""></a>
+    <a href="#jupiter" data-os="Jupiter"><img class="img1" src="img/jupiter.png" alt=""></a>
+    <div class="float">
+      <a href="#junglee-rummy" data-os="Junglee Rummy"><img class="img1" src="img/junglee-rummy.jpeg" alt=""></a>
+      <a href="#zuppe" data-os="Zuppe"><img class="img1" src="img/zupee.png" alt=""></a>
+      <a href="#my11circle" data-os="my11circle"><img class="img1" src="img/my11circle.png" alt=""></a>
+    </div>
+    <div class="float1">
+      <a href="#paytm" data-os="Paytm"><img class="img1" src="img/paytm.png" alt=""></a>
+      <a href="#phonepe " data-os="Phone Pay"><img class="img1" src="img/phonepe.jpeg" alt=""></a>
+      <a href="#gpay" data-os="Gpay"><img class="img1" src="img/gpay.png" alt=""></a>
+    </div>
+    <div class="float2">
+      <a href="#dreem11" data-os="Apk"><img class="img1" src="img/dreem11.jpg" alt=""></a>
+      <a href="#upstock " data-os="Upstock"><img class="img1" src="img/upstock.png" alt=""></a>
+      
+    </div>
+    
+  </div>
+  <div class="installer" id="dreem11">
+    <div class="info" data-weight="Dreem11"><img class="imgs" src="img/dreem11.jpg" alt=""></div>
+    <div class="details">
+      <p>Dreem11 </p>
+      <span> </span>
+      <ul>
+        <li>*Pan Card Required</li>
+        <li>*When app download is completed</li>
+        <br>
+        <li>*Per Reffer Rs.500-5000</li>
+
+      </ul>
+    </div>
+    <button id="downloadBtn10" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+  </div>
+  <div class="installer" id="upstock">
+    <div class="info" data-weight="Dreem11"><img class="imgs" src="img/upstock.png" alt=""></div>
+    <div class="details">
+      <p>Upstock </p>
+      <span> </span>
+      <ul>
+        <li>*Pan Card Required</li>
+        <li>*Online Stock marketing app <i class="fa fa-user-plus" aria-hidden="true"></i></li>
+        <li>*Sign in/Sign</li> <i class="fa fa-user-plus" aria-hidden="true"></i></li>
+        <br>
+        <li>*Per Reffer Rs.150</li>
+
+      </ul>
+    </div>
+    <button id="downloadBtn11" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+  </div>
+  <div class="installer" id="navi">
+    <div class="info" data-weight="Navi"><img class="imgs" src="img/navi.jpeg" alt=""></div>
+    <div class="details">
+      <p>Navi </p>
+      <span>Payment & Home loan app</span>
+      <ul>
+        <li>*Pan Card Required</li>
+        <li>*When app download is completed
+          <br>to click her 👉 <button ><a
+            href="https://api.whatsapp.com/send?phone=+918799872277&amp;text=Hii ARK Navi app downloaded">contact
+            ARK</a></button>
+        </li>
+        <br>
+        <li>*Per Reffer Rs.100</li>
+
+      </ul>
+    </div>
+    <button id="downloadBtn1" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+  </div>
+  <div class="installer" id="winzo">
+    <div class="info" data-weight="Winzo"><img class="imgs" src="img/winzo.png" alt=""></div>
+    <div class="details">
+      <p>Winzo</p>
+      <span>Game</span>
+      <ul>
+        <li>Online money earning app <i class="fa fa-user-plus" aria-hidden="true"></i></li>
+        <li>Sign in/Sign</li> <i class="fa fa-user-plus" aria-hidden="true"></i></li>
+        <br>
+        <li>*Per Reffer Rs.100</li>
+
+      </ul>
+    </div>
+    <button id="downloadBtn2" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+  </div>
+  <div class="installer" id="jupiter">
+    <div class="info" data-weight="Jupiter">
+      <div class="imgss"><img class="imgs" src="img/jupiter.png" alt=""></div>
+    </div>
+    <div class="details">
+      <p>Jupiter</p>
+      <span>Fedral Bank app</span>
+      <ul>
+        <li>*Login/Sign Up</li>
+        <li>*Adhhar and Pan card Required</li>
+        <li>*Open account</li>
+        <br>
+        <li>*Per Reffer Rs.100</li>
+      </ul>
+    </div>
+    <button id="downloadBtn3" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+  </div>
+  </div>
+  <div class="installer" id="junglee-rummy">
+    <div class="info" data-weight="Junglee Rummy"><img class="imgs" src="img/junglee-rummy.jpeg" alt=""></div>
+    <div class="details">
+      <p>Junglee Rummy </p>
+      <span>Game</span>
+      <ul>
+        <li>*Rummy</li>
+        <li>*TeenPatti</li>
+        <br>
+      </ul>
+    </div>
+    <button id="downloadBtn4" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+  </div>
+  <div class="installer" id="zuppe">
+    <div class="info" data-weight="Zuppe"><img class="imgs" src="img/zupee.png" alt=""></div>
+    <div class="details">
+      <p>Zupee</p>
+      <span>Game</span>
+      <ul>
+        <li>*Online money earning app</li>
+        <li>*Sign In/Sign Up</li>
+        <br>
+        <li>*Per Reffer Rs.5-50</li>
+      </ul>
+    </div>
+    <button id="downloadBtn5" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+  </div>
+  <div class="installer" id="my11circle">
+    <div class="info" data-weight="My11circle">
+      <div class="imgss"><img class="imgs" src="img/my11circle.png" alt=""></div>
+    </div>
+    <div class="details">
+      <p>My11circle</p>
+      <span>Match</span>
+      <ul>
+        <li>Online match money earning app</li>
+        <li>Sign In/Sign Up</li>
+        <li>*Per Reffer Rs.50-5000</li>
+
+      </ul>
+    </div>
+    <button id="downloadBtn6" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+  </div>
+  <div class="installer" id="paytm">
+    <div class="info" data-weight="Paytm"><img class="imgs" src="img/paytm.png" alt=""></div>
+    <div class="details">
+      <p>Paytm </p>
+      <span>Payment cashback app</span>
+      <ul>
+        <li>*Online Payment app</li>
+        <li>*Login/Register</li>
+        <br>
+        <li>*Per Reffer Rs.100</li>
+      </ul>
+    </div>
+    <button id="downloadBtn7" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+  </div>
+  <div class="installer" id="phonepe">
+    <div class="info" data-weight="Phone Pay"><img class="imgs" src="img/phonepe.jpeg" alt=""></div>
+    <div class="details">
+      <p>Phone Pay</p>
+      <span>Payment App</span>
+      <ul>
+        <li>*Online Payment app</li>
+        <li>*Login/Register</li>
+        <br>
+        <li>*Per Reffer Rs.100</li>
+      </ul>
+    </div>
+    <button id="downloadBtn8" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+  </div>
+  <div class="installer" id="gpay">
+    <div class="info" data-weight="">
+      <div class="imgss"><img class="imgs" src="img/gpay.png" alt=""></div>
+    </div>
+    <div class="details">
+      <p>Gpay</p>
+      <span>Payment app</span>
+      <ul>
+        <li>*Online Payment app</li>
+        <li>*Login/Register</li>
+        <br>
+        <li>*Per Reffer Rs.201</li>
+      </ul>
+    </div>
+    <button id="downloadBtn9" class="downloadBtn">Download</button>
+    <a class="close" href="#"></a>
+      <!-- partial -->
+      <script>
+        function setupDownloadButton(buttonId, redirectUrl) {
+          document.getElementById(buttonId).addEventListener('click', function () {
+            var btn = this;
+            btn.classList.add('downloading');
+
+            // Simulate download process
+            setTimeout(function () {
+              // After 2 seconds, redirect to the specified link
+              window.location.href = redirectUrl;
+            }, 1000);
+          });
+        }
+
+        setupDownloadButton('downloadBtn1', 'https://g.navi.com/wc7a9');
+        setupDownloadButton('downloadBtn2', 'https://winzo.onelink.me/gu8K/ez7x6727');
+        setupDownloadButton('downloadBtn3', 'https://jupiter.onelink.me/02J7/s0ucv7nh');
+        setupDownloadButton('downloadBtn4', 'https://dgw4m.app.link/fqpcBlaDmCb?ad=refer&refid=72631923');
+        setupDownloadButton('downloadBtn5', 'https://app.adjust.net.in/fm6f3xx_uxx1ww6?redirect_android=https%3A%2F%2Fwww.zupee.com%2F&label=87xxx4g567');
+        setupDownloadButton('downloadBtn6', 'https://my11circle-ps.onelink.me/pDLJ/upfupklb');
+        setupDownloadButton('downloadBtn7', ' https://p.paytm.me/xCTH/7m110lkp');
+        setupDownloadButton('downloadBtn8', 'https://phon.pe/otla2v14');
+        setupDownloadButton('downloadBtn9', ' https://g.co/payinvite/nn6la3x');
+        setupDownloadButton('downloadBtn10', 'https://dream11.onelink.me/2xAP/50sbm4p4');
+        setupDownloadButton('downloadBtn11', 'https://link.upstox.com/oi2Q');
+      </script>
+
+</body>
+
+</html>
